@@ -23,7 +23,7 @@ export default function Profile() {
          setIncidents(response.data)
       })
    }, [ongId]);
-  
+
    async function handleDeleteIncident(id) {
       try {
          await api.delete(`incidents/${id}`, {
@@ -67,9 +67,13 @@ export default function Profile() {
                   <p>{incident.descricao}</p>
 
                   <strong>VALOR:</strong>
-                  <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incident.valor)}</p>
+                  <p>{
+                     Intl.NumberFormat('pt-BR', {
+                        style: 'currency', currency: 'BRL'
+                     }).format(incident.valor)
+                  }</p>
 
-                  <button onClick = {() => {handleDeleteIncident(incident.id)}} type="button">
+                  <button onClick={() => { handleDeleteIncident(incident.id) }} type="button">
                      <FiTrash2 size={20} color="#a8a8b3" />
                   </button>
                </li>
