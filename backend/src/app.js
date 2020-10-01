@@ -1,5 +1,6 @@
 const express = require('express'); // biblioteca com as configurações básicas para as aplicações
 const routes = require('./routes');
+const { errors } = require('celebrate');
 const cors = require('cors');
 
 const app = express();
@@ -14,5 +15,6 @@ app.use(cors()); // Apenas isso é necessário para que o frontend se conecte co
 */
 app.use(express.json())
 app.use(routes);
+app.use(errors());
 
-app.listen(3333);
+module.exports = app;
